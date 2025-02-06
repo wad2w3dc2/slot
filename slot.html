@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        .slot-machine { display: flex; justify-content: center; margin: 20px; }
+        .reel { width: 80px; height: 80px; border: 2px solid black; font-size: 2em; display: flex; align-items: center; justify-content: center; background: white; margin: 5px; }
+        button { padding: 10px 20px; font-size: 1.2em; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="slot-machine">
+        <div class="reel" id="reel1">❓</div>
+        <div class="reel" id="reel2">❓</div>
+        <div class="reel" id="reel3">❓</div>
+    </div>
+    <button onclick="spin()">Spin</button>
+    <p id="result"></p>
+    
+    <script>
+        const symbols = ['🍒', '🍋', '🍊', '🍉', '⭐', '7️⃣'];
+        
+        function spin() {
+            let reel1 = document.getElementById("reel1");
+            let reel2 = document.getElementById("reel2");
+            let reel3 = document.getElementById("reel3");
+            let result = document.getElementById("result");
+            
+            let spin1 = symbols[Math.floor(Math.random() * symbols.length)];
+            let spin2 = symbols[Math.floor(Math.random() * symbols.length)];
+            let spin3 = symbols[Math.floor(Math.random() * symbols.length)];
+            
+            reel1.textContent = spin1;
+            reel2.textContent = spin2;
+            reel3.textContent = spin3;
+            
+            if (spin1 === spin2 && spin2 === spin3) {
+                result.textContent = "🎉";
+            } else {
+                result.textContent = "you lose!";
+            }
+        }
+    </script>
+</body>
+</html>
